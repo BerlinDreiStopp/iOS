@@ -53,6 +53,11 @@
     return [self.hafasId isEqualToString:object.hafasId];
 }
 
+- (NSUInteger)hash
+{
+    return [self.hafasId hash];
+}
+
 - (NSString *)description
 {
     return [NSString stringWithFormat:@"hafasId:%@, name:%@, adjacentStops:<%@>", self.hafasId, self.name, self.adjacentStops ? [[self.adjacentStops valueForKey:@"hafasId"] componentsJoinedByString:@",\n  "] : nil];
