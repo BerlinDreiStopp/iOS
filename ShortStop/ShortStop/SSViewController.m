@@ -106,6 +106,36 @@
     return renderer;
 }
 
+- (MKAnnotationView *)mapView:(MKMapView *)mapView viewForAnnotation:(id <MKAnnotation>)annotation
+{
+    if ([annotation isKindOfClass:[MKUserLocation class]]) {
+        return nil;
+    }
+
+    static NSString *AnnotationIdentifier = @"AnnotationIdentifier";
+    
+    MKPinAnnotationView *pinView = (MKPinAnnotationView *)[mapView dequeueReusableAnnotationViewWithIdentifier:AnnotationIdentifier];
+    
+    if (nil == pinView) {
+        pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
+
+        [pinView setPinColor:MKPinAnnotationColorRed];
+        pinView.animatesDrop = YES;
+        pinView.canShowCallout = YES;
+
+        UIImageView *iconView = [[UIImageView alloc] initWithImage:[self iconForStop:annotation]];
+        pinView.leftCalloutAccessoryView = iconView;
+    }
+    else 
+    {
+        UIImageView *iconView = (UIImageView *)pinView.leftCalloutAccessoryView;
+        iconView.image = [self iconForStop:annotation];
+        pinView.annotation = annotation;
+    }
+    
+    return pinView; 
+}
+
 #pragma mark - Helper
 
 - (void)configureMapView
@@ -178,5 +208,17 @@
     return [self.mapView regionThatFits:region];
 }
 
+- (UIImage *)iconForStop:(SSStop *)stop
+{
+    if (stop.isSBahn && stop.isUBahn) {
+        return [UIImage imageNamed:@"USBahnLogo"];
+    } else if (stop.isSBahn) {
+        return [UIImage imageNamed:@"SBahnLogo"];
+    } else if (stop.isUBahn) {
+        return [UIImage imageNamed:@"UBahnLogo"];
+    }
+
+    return nil;
+}
 
 @end

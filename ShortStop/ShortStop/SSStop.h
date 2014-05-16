@@ -20,4 +20,7 @@
 @property (nonatomic, assign) CLLocationDegrees longitude;
 @property (nonatomic, readonly) CLLocationCoordinate2D location;
 
+@property (nonatomic, readonly) BOOL isSBahn;
+@property (nonatomic, readonly) BOOL isUBahn;
+
 @end
