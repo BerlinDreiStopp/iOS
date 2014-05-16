@@ -36,7 +36,11 @@
 
 - (NSString *)subtitle
 {
-    return [NSString stringWithFormat:@"Connects with %u line(s).", self.lines.count];
+    if ([self.lines count]) {
+        return [NSString stringWithFormat:@"Connects with %@", [self.lines componentsJoinedByString:@", "]];
+    } else {
+        return [NSString stringWithFormat:@"No connections"];
+    }
 }
 
 #pragma mark - NSObject

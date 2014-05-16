@@ -10,4 +10,9 @@
 
 @implementation SSLine
 
+- (NSString *)description
+{
+    return self.name;
+}
+
 @end
