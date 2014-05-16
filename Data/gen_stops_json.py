@@ -61,34 +61,36 @@ with open('stops.txt', 'r') as csvfile:
 
 for i,s in stations.items():
   name_idx = s['name']
-  try:
-    for line in s['lines']:
-      line_idx = line_stops[line].index(name_idx)
-      if line_idx == 0:
-        asn = line_stops[line][line_idx+1]
-        aid = stations_ids[asn]
-        if aid:
-          #print '\t>', asn, aid
-          stations[i]['adjacent_stops'].append(aid)
-      elif line_idx == len(line_stops[line]):
-        psn = line_stops[line][line_idx-1]
+  if not s.has_key('lines'):
+    continue
+  for line in s['lines']:
+    line_idx = line_stops[line].index(name_idx)
+    if line_idx == 0:
+      asn = line_stops[line][line_idx+1]
+      aid = stations_ids[asn]
+      if aid:
+        #print '\t>', asn, aid
+        stations[i]['adjacent_stops'].append(aid)
+    elif line_idx == len(line_stops[line])-1:
+      psn = line_stops[line][line_idx-1]
+      pid = stations_ids[psn]
+      if pid:
+        #print '\t<', psn, pid
+        stations[i]['adjacent_stops'].append(pid)
+    else:
+      asn = line_stops[line][line_idx+1]
+      psn = line_stops[line][line_idx-1]
+      aid = stations_ids[asn]
+      try:
         pid = stations_ids[psn]
-        if pid:
-          #print '\t<', psn, pid
-          stations[i]['adjacent_stops'].append(pid)
-      else:
-        asn = line_stops[line][line_idx+1]
-        psn = line_stops[line][line_idx-1]
-        aid = stations_ids[asn]
-        pid = stations_ids[psn]
-        if aid:
-          #print '\t>', asn, aid
-          stations[i]['adjacent_stops'].append(aid)
-        if pid:
-          #print '\t<', psn, pid
-          stations[i]['adjacent_stops'].append(pid)
-  except:
-    pass #print 'no lines:', s['name']
+      except:
+        continue
+      if aid:
+        #print '\t>', asn, aid
+        stations[i]['adjacent_stops'].append(aid)
+      if pid:
+        #print '\t<', psn, pid
+        stations[i]['adjacent_stops'].append(pid)
 
 if False:
   with open('transfers.txt', 'r') as csvfile:

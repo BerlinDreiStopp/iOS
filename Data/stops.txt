@@ -301,7 +301,7 @@ stop_id,stop_code,stop_name,stop_desc,stop_lat,stop_lon,zone_id,stop_url,locatio
 9011251,,Iranische Straße (Berlin),,52.5550630,13.3659560,,,0,
 9011252,,Osram-Höfe (Berlin),,52.5536960,13.3582910,,,0,
 9012101,,S Anhalter Bahnhof (Berlin),,52.5044990,13.3823550,,,0,
-9012102,,U Kochstraße/Checkpoint Charlie (Berlin),,52.5066730,13.3908630,,,0,
+9012102,,U Kochstraße (Berlin),,52.5066730,13.3908630,,,0,
 9012103,,U Hallesches Tor (Berlin),,52.4977740,13.3917600,,,0,
 9012104,,Lindenstraße/Oranienstraße (Berlin),,52.5069620,13.3983690,,,0,
 9012105,,Abgeordnetenhaus (Berlin),,52.5065530,13.3796660,,,0,
