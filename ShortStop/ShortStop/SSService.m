@@ -73,6 +73,7 @@ static NSString *const kLineDataFileName = @"lines.json";
         stop.latitude = [dict[@"latitude"] doubleValue];
         stop.longitude = [dict[@"longitude"] doubleValue];
         stop.lines = [self linesForLineNames:dict[@"lines"]];
+        stop.lineTypes = dict[@"type"];
         stop.adjacentStopIds = dict[@"adjacent_stops"];
         [stopsById setObject:stop forKey:stop.hafasId];
     }

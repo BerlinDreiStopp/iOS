@@ -14,12 +14,12 @@
 
 - (BOOL)isSBahn
 {
-    return [self.name hasPrefix:@"S "] || [self.name hasPrefix:@"S+U "];
+    return [self.lineTypes isEqualToString:@"S"] || [self.lineTypes isEqualToString:@"S+U"];
 }
 
 - (BOOL)isUBahn
 {
-    return [self.name hasPrefix:@"U "] || [self.name hasPrefix:@"S+U "];
+    return [self.lineTypes isEqualToString:@"U"] || [self.lineTypes isEqualToString:@"S+U"];
 }
 
 #pragma mark - MKAnnotation

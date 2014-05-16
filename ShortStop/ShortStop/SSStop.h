@@ -14,8 +14,10 @@
 @property (nonatomic, strong) NSString *hafasId;
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) NSArray *lines;
+@property (nonatomic, strong) NSString *lineTypes;
 @property (nonatomic, strong) NSArray *adjacentStops;
 @property (nonatomic, strong) NSArray *adjacentStopIds;
+
 @property (nonatomic, assign) CLLocationDegrees latitude;
 @property (nonatomic, assign) CLLocationDegrees longitude;
 
