@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 import re
 import csv
@@ -25,7 +26,7 @@ with open('stops.txt', 'r') as csvfile:
     name_idx = 2
     lat_idx = 4
     lon_idx = 5
-    name = row[name_idx]
+    name = unicode(row[name_idx], 'utf-8')
 
     # skip non U- or S-Bahn stations
     if not name_match.search(name) or bus_match.search(name):
@@ -67,11 +68,13 @@ for i,s in stations.items():
         asn = line_stops[line][line_idx+1]
         aid = stations_ids[asn]
         if aid:
+          #print '\t>', asn, aid
           stations[i]['adjacent_stops'].append(aid)
       elif line_idx == len(line_stops[line]):
         psn = line_stops[line][line_idx-1]
         pid = stations_ids[psn]
         if pid:
+          #print '\t<', psn, pid
           stations[i]['adjacent_stops'].append(pid)
       else:
         asn = line_stops[line][line_idx+1]
@@ -79,8 +82,10 @@ for i,s in stations.items():
         aid = stations_ids[asn]
         pid = stations_ids[psn]
         if aid:
+          #print '\t>', asn, aid
           stations[i]['adjacent_stops'].append(aid)
         if pid:
+          #print '\t<', psn, pid
           stations[i]['adjacent_stops'].append(pid)
   except:
     pass #print 'no lines:', s['name']
