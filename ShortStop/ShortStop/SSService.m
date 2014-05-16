@@ -40,7 +40,21 @@
 
 - (NSArray *)stopsWithinShortTripRangeOfStops:(NSArray *)stops
 {
+    NSMutableSet *results = [NSMutableSet set];
+    for (SSStop *stop in stops) {
+        [self stopsWithinRange:3 ofStop:stop withResults:results];
+    }
     return [NSArray array];
+}
+
+- (void)stopsWithinRange:(NSUInteger)range ofStop:(SSStop *)origin withResults:(NSMutableSet *)results
+{
+    if (range > 0) {
+        for (SSStop *stop in origin.adjacentStops) {
+            [results addObject:stop];
+            [self stopsWithinRange:(range - 1) ofStop:stop withResults:results];
+        }
+    }
 }
 
 double distance (CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
