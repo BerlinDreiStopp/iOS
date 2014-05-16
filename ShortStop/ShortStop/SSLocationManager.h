@@ -9,8 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
 
+typedef void(^SSLocationManagerUpdateLocationsHandler)(NSArray *locations);
+
 @interface SSLocationManager : NSObject
 
 - (CLLocation *)currentUserLocation;
+
+@property (nonatomic, copy) SSLocationManagerUpdateLocationsHandler onUpdateLocations;
 
 @end

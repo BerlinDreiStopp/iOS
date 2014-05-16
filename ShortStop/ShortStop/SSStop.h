@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import <MapKit/MapKit.h>
 
-@interface SSStop : NSObject
+@interface SSStop : NSObject <MKAnnotation>
 
 @property (nonatomic, strong) NSString *hafasId;
 @property (nonatomic, strong) NSString *name;

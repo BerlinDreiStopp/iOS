@@ -8,7 +8,7 @@
 
 #import "SSLocationManager.h"
 
-@interface SSLocationManager ()
+@interface SSLocationManager () <CLLocationManagerDelegate>
 @property (nonatomic, strong) CLLocationManager *locationManager;
 @end
 
@@ -17,6 +17,7 @@
 - (id)init {
     if ((self = [super init])) {
         _locationManager = [[CLLocationManager alloc] init];
+        _locationManager.delegate = self;
         [_locationManager startUpdatingLocation];
     }
 
@@ -25,6 +26,15 @@
 
 - (CLLocation *)currentUserLocation {
     return self.locationManager.location;
+}
+
+#pragma mark - CLLocationManagerDelegate
+
+- (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray *)locations
+{
+    if (self.onUpdateLocations) {
+        self.onUpdateLocations(locations);
+    }
 }
 
 @end
