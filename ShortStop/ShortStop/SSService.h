@@ -15,4 +15,6 @@
 
 - (NSArray *)stopsWithinShortTripRangeOfStops:(NSArray *)stops;
 
+- (NSArray *)stopsWithNames:(NSArray *)stopNames;
+
 @end

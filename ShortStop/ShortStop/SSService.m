@@ -86,7 +86,15 @@ static NSString *const kLineDataFileName = @"lines.json";
         }
         stop.adjacentStops = [NSArray arrayWithArray:adjacentStops];
     }
+
     self.stops = [stopsById allValues];
+
+    NSIndexSet *is = [self.stops indexesOfObjectsPassingTest:^BOOL(SSStop *sstop, NSUInteger idx, BOOL *stop) {
+        return sstop.adjacentStops.count == 0 || sstop.lines.count == 0;
+    }];
+    NSMutableArray *sstaorstn = [self.stops mutableCopy];
+    [sstaorstn removeObjectsAtIndexes:is];
+    self.stops = [sstaorstn copy];
 }
 
 - (NSArray *)linesForLineNames:(NSArray *)lineNames
@@ -130,10 +138,7 @@ static NSString *const kLineDataFileName = @"lines.json";
         return obj1.distance < obj2.distance ? NSOrderedAscending : NSOrderedDescending;
     }];
     
-    return @[
-             [(SSStopDistance *) sortedStopsByDistance[0] stop],
-             [(SSStopDistance *) sortedStopsByDistance[1] stop],
-             [(SSStopDistance *) sortedStopsByDistance[2] stop]];
+    return self.stops;
 }
 
 - (NSArray *)stopsWithinShortTripRangeOfStops:(NSArray *)stops
@@ -160,5 +165,30 @@ double distance (CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
     CLLocation *toLocation = [[CLLocation alloc] initWithCoordinate:to altitude:0 horizontalAccuracy:0 verticalAccuracy:0 course:0 speed:0 timestamp:0];
     return [fromLocation distanceFromLocation:toLocation];
 };
+
+- (NSArray *)stopsWithNames:(NSArray *)stopNames
+{
+    NSMutableArray *stops = [NSMutableArray array];
+    for (NSString *stopName in stopNames) {
+        SSStop *stop = [self stopWithName:stopName];
+        if (stop) {
+            [stops addObject:stop];
+        }
+    }
+    return [stops copy];
+}
+
+- (SSStop *)stopWithName:(NSString *)name
+{
+    NSUInteger idx = [self.stops indexOfObjectPassingTest:^BOOL(SSStop *sstop, NSUInteger idx, BOOL *stop) {
+        return [sstop.name isEqualToString:name];
+    }];
+    
+    if (NSNotFound == idx) {
+        return nil;
+    }
+
+    return [self.stops objectAtIndex:idx];
+}
 
 @end
