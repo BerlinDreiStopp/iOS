@@ -17,6 +17,6 @@
 @property (nonatomic, strong) NSArray *adjacentStops;
 @property (nonatomic, assign) CLLocationDegrees latitude;
 @property (nonatomic, assign) CLLocationDegrees longitude;
-@property (nonatomic, readonly) CLLocationCoordinate2D coordinate;
+@property (nonatomic, readonly) CLLocationCoordinate2D location;
 
 @end

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		46A6CB5519261B8A0023155D /* SSStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A6CB5419261B8A0023155D /* SSStop.m */; };
 		46A6CB5819261D6E0023155D /* SSLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A6CB5719261D6E0023155D /* SSLine.m */; };
+		46A6CB5B192620E30023155D /* SSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A6CB5A192620E30023155D /* SSService.m */; };
 		55C9827019260E6B001D8297 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C9826F19260E6B001D8297 /* Foundation.framework */; };
 		55C9827219260E6B001D8297 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C9827119260E6B001D8297 /* CoreGraphics.framework */; };
 		55C9827419260E6B001D8297 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C9827319260E6B001D8297 /* UIKit.framework */; };
@@ -42,6 +43,8 @@
 		46A6CB5419261B8A0023155D /* SSStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSStop.m; sourceTree = "<group>"; };
 		46A6CB5619261D6E0023155D /* SSLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLine.h; sourceTree = "<group>"; };
 		46A6CB5719261D6E0023155D /* SSLine.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLine.m; sourceTree = "<group>"; };
+		46A6CB59192620E20023155D /* SSService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSService.h; sourceTree = "<group>"; };
+		46A6CB5A192620E30023155D /* SSService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSService.m; sourceTree = "<group>"; };
 		55C9826C19260E6B001D8297 /* ShortStop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ShortStop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		55C9826F19260E6B001D8297 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		55C9827119260E6B001D8297 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -132,12 +135,14 @@
 				55C9828519260E6B001D8297 /* SSViewController.m */,
 				55C982A6192610FA001D8297 /* SSLocationManager.h */,
 				55C982A7192610FA001D8297 /* SSLocationManager.m */,
-				55C9828719260E6B001D8297 /* Images.xcassets */,
-				55C9827619260E6B001D8297 /* Supporting Files */,
 				46A6CB5319261B8A0023155D /* SSStop.h */,
 				46A6CB5419261B8A0023155D /* SSStop.m */,
 				46A6CB5619261D6E0023155D /* SSLine.h */,
 				46A6CB5719261D6E0023155D /* SSLine.m */,
+				46A6CB59192620E20023155D /* SSService.h */,
+				46A6CB5A192620E30023155D /* SSService.m */,
+				55C9828719260E6B001D8297 /* Images.xcassets */,
+				55C9827619260E6B001D8297 /* Supporting Files */,
 			);
 			path = ShortStop;
 			sourceTree = "<group>";
@@ -273,6 +278,7 @@
 				55C9828619260E6B001D8297 /* SSViewController.m in Sources */,
 				55C9828019260E6B001D8297 /* SSAppDelegate.m in Sources */,
 				46A6CB5519261B8A0023155D /* SSStop.m in Sources */,
+				46A6CB5B192620E30023155D /* SSService.m in Sources */,
 				55C9827C19260E6B001D8297 /* main.m in Sources */,
 				46A6CB5819261D6E0023155D /* SSLine.m in Sources */,
 			);
