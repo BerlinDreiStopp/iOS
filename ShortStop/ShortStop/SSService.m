@@ -170,7 +170,10 @@ double distance (CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
 {
     NSMutableArray *stops = [NSMutableArray array];
     for (NSString *stopName in stopNames) {
-        [stops addObject:[self stopWithName:stopName]];
+        SSStop *stop = [self stopWithName:stopName];
+        if (stop) {
+            [stops addObject:stop];
+        }
     }
     return [stops copy];
 }
@@ -180,8 +183,10 @@ double distance (CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
     NSUInteger idx = [self.stops indexOfObjectPassingTest:^BOOL(SSStop *sstop, NSUInteger idx, BOOL *stop) {
         return [sstop.name isEqualToString:name];
     }];
-
-    NSAssert(NSNotFound != idx, @"Can't find stop: %@", name);
+    
+    if (NSNotFound == idx) {
+        return nil;
+    }
 
     return [self.stops objectAtIndex:idx];
 }
