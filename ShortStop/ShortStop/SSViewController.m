@@ -51,11 +51,13 @@
 
     NSArray *nearbyStops = [self.serviceserviceSERVICE stopsWithinShortTripRangeOfStops:@[stop]];
 
-    // naively reset to red
+    // naively reset state
     for (id<MKAnnotation> annotation in self.mapView.annotations) {
         MKPinAnnotationView *v = (MKPinAnnotationView *)[self.mapView viewForAnnotation:annotation];
         v.pinColor = MKPinAnnotationColorRed;
     }
+
+    [self.mapView removeOverlays:self.mapView.overlays];
 
     // show current as purple
     view.pinColor = MKPinAnnotationColorPurple;
@@ -68,7 +70,40 @@
                 v.pinColor = MKPinAnnotationColorGreen;
             }
         }
+
+        for (NSString *stopID in nearbyStop.adjacentStops) {
+            NSUInteger idx = [self.mapView.annotations indexOfObjectPassingTest:^BOOL(SSStop *stop, NSUInteger idx, BOOL *stopLoop) {
+                return [stop.hafasId isEqual:stopID];
+            }];
+
+            if (NSNotFound == idx) {
+                continue;
+            }
+
+            SSStop *adjacentStop = [self.mapView.annotations objectAtIndex:idx];
+
+            if (![nearbyStops containsObject:adjacentStop]) {
+                continue;
+            }
+
+            CLLocationCoordinate2D coordinateArray[2];
+            coordinateArray[0] = nearbyStop.coordinate;
+            coordinateArray[1] = adjacentStop.coordinate;
+            MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinateArray count:2];
+
+            [self.mapView addOverlay:polyline];
+        }
     }
+}
+
+- (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
+{
+    MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline *)overlay];
+    renderer.lineWidth = 3.f;
+    renderer.strokeColor = [UIColor blueColor];
+    renderer.alpha = 0.5f;
+    
+    return renderer;
 }
 
 #pragma mark - Helper
