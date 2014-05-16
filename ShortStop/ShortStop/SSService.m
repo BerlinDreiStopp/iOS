@@ -118,7 +118,10 @@ static NSString *const kLineDataFileName = @"lines.json";
     [stopsByDistance sortedArrayUsingComparator:^NSComparisonResult(SSStopDistance *obj1, SSStopDistance *obj2) {
         return obj1.distance < obj2.distance ? NSOrderedAscending : NSOrderedDescending;
     }];
-    return @[stopsByDistance[0], stopsByDistance[1], stopsByDistance[2]];
+    return @[
+             [(SSStopDistance *) stopsByDistance[0] stop],
+             [(SSStopDistance *) stopsByDistance[1] stop],
+             [(SSStopDistance *) stopsByDistance[2] stop]];
 }
 
 - (NSArray *)stopsWithinShortTripRangeOfStops:(NSArray *)stops
