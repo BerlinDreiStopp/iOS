@@ -86,7 +86,15 @@ static NSString *const kLineDataFileName = @"lines.json";
         }
         stop.adjacentStops = [NSArray arrayWithArray:adjacentStops];
     }
+
     self.stops = [stopsById allValues];
+
+    NSIndexSet *is = [self.stops indexesOfObjectsPassingTest:^BOOL(SSStop *sstop, NSUInteger idx, BOOL *stop) {
+        return sstop.adjacentStops.count == 0 || sstop.lines.count == 0;
+    }];
+    NSMutableArray *sstaorstn = [self.stops mutableCopy];
+    [sstaorstn removeObjectsAtIndexes:is];
+    self.stops = [sstaorstn copy];
 }
 
 - (NSArray *)linesForLineNames:(NSArray *)lineNames
