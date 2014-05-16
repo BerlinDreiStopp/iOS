@@ -7,6 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		42917F4719264A6700344EF4 /* SBahnLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 42917F4319264A6700344EF4 /* SBahnLogo.png */; };
+		42917F4819264A6700344EF4 /* SBahnLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42917F4419264A6700344EF4 /* SBahnLogo@2x.png */; };
+		42917F4919264A6700344EF4 /* UBahnLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 42917F4519264A6700344EF4 /* UBahnLogo.png */; };
+		42917F4A19264A6700344EF4 /* UBahnLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42917F4619264A6700344EF4 /* UBahnLogo@2x.png */; };
+		42917F4D19264C3000344EF4 /* USBahnLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 42917F4B19264C3000344EF4 /* USBahnLogo.png */; };
+		42917F4E19264C3000344EF4 /* USBahnLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42917F4C19264C3000344EF4 /* USBahnLogo@2x.png */; };
 		46A6CB5519261B8A0023155D /* SSStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A6CB5419261B8A0023155D /* SSStop.m */; };
 		46A6CB5819261D6E0023155D /* SSLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A6CB5719261D6E0023155D /* SSLine.m */; };
 		46A6CB5B192620E30023155D /* SSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A6CB5A192620E30023155D /* SSService.m */; };
@@ -41,6 +47,12 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		42917F4319264A6700344EF4 /* SBahnLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SBahnLogo.png; sourceTree = "<group>"; };
+		42917F4419264A6700344EF4 /* SBahnLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "SBahnLogo@2x.png"; sourceTree = "<group>"; };
+		42917F4519264A6700344EF4 /* UBahnLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = UBahnLogo.png; sourceTree = "<group>"; };
+		42917F4619264A6700344EF4 /* UBahnLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UBahnLogo@2x.png"; sourceTree = "<group>"; };
+		42917F4B19264C3000344EF4 /* USBahnLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = USBahnLogo.png; sourceTree = "<group>"; };
+		42917F4C19264C3000344EF4 /* USBahnLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "USBahnLogo@2x.png"; sourceTree = "<group>"; };
 		46A6CB5319261B8A0023155D /* SSStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSStop.h; sourceTree = "<group>"; };
 		46A6CB5419261B8A0023155D /* SSStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSStop.m; sourceTree = "<group>"; };
 		46A6CB5619261D6E0023155D /* SSLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLine.h; sourceTree = "<group>"; };
@@ -98,6 +110,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		42917F4119264A6700344EF4 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				42917F4219264A6700344EF4 /* Images */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		42917F4219264A6700344EF4 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				42917F4319264A6700344EF4 /* SBahnLogo.png */,
+				42917F4419264A6700344EF4 /* SBahnLogo@2x.png */,
+				42917F4519264A6700344EF4 /* UBahnLogo.png */,
+				42917F4619264A6700344EF4 /* UBahnLogo@2x.png */,
+				42917F4B19264C3000344EF4 /* USBahnLogo.png */,
+				42917F4C19264C3000344EF4 /* USBahnLogo@2x.png */,
+			);
+			path = Images;
+			sourceTree = "<group>";
+		};
 		55C9826319260E6B001D8297 = {
 			isa = PBXGroup;
 			children = (
@@ -156,6 +189,7 @@
 			children = (
 				46A6CB60192647BA0023155D /* lines.json */,
 				46A6CB5D192641E20023155D /* stops.json */,
+				42917F4119264A6700344EF4 /* Resources */,
 				55C9827719260E6B001D8297 /* ShortStop-Info.plist */,
 				55C9827819260E6B001D8297 /* InfoPlist.strings */,
 				55C9827B19260E6B001D8297 /* main.m */,
@@ -261,8 +295,14 @@
 			files = (
 				46A6CB61192647BA0023155D /* lines.json in Resources */,
 				55C9828819260E6B001D8297 /* Images.xcassets in Resources */,
+				42917F4819264A6700344EF4 /* SBahnLogo@2x.png in Resources */,
+				42917F4719264A6700344EF4 /* SBahnLogo.png in Resources */,
+				42917F4D19264C3000344EF4 /* USBahnLogo.png in Resources */,
+				42917F4919264A6700344EF4 /* UBahnLogo.png in Resources */,
+				42917F4A19264A6700344EF4 /* UBahnLogo@2x.png in Resources */,
 				55C9827A19260E6B001D8297 /* InfoPlist.strings in Resources */,
 				46A6CB5F192641E20023155D /* stops.json in Resources */,
+				42917F4E19264C3000344EF4 /* USBahnLogo@2x.png in Resources */,
 				55C9828319260E6B001D8297 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
