@@ -18,7 +18,6 @@
 @property (nonatomic, strong) NSArray *adjacentStopIds;
 @property (nonatomic, assign) CLLocationDegrees latitude;
 @property (nonatomic, assign) CLLocationDegrees longitude;
-@property (nonatomic, readonly) CLLocationCoordinate2D location;
 
 @property (nonatomic, readonly) BOOL isSBahn;
 @property (nonatomic, readonly) BOOL isUBahn;

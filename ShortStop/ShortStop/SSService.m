@@ -121,18 +121,18 @@ static NSString *const kLineDataFileName = @"lines.json";
     NSMutableArray *stopsByDistance = [NSMutableArray array];
     for (SSStop *stop in self.stops) {
         SSStopDistance *stopDistance = [[SSStopDistance alloc] init];
-        stopDistance.distance = distance(location, stop.location);
+        stopDistance.distance = distance(location, stop.coordinate);
         stopDistance.stop = stop;
         [stopsByDistance addObject:stopDistance];
     }
-    [stopsByDistance sortedArrayUsingComparator:^NSComparisonResult(SSStopDistance *obj1, SSStopDistance *obj2) {
+    NSArray *sortedStopsByDistance = [stopsByDistance sortedArrayUsingComparator:^NSComparisonResult(SSStopDistance *obj1, SSStopDistance *obj2) {
         return obj1.distance < obj2.distance ? NSOrderedAscending : NSOrderedDescending;
     }];
     
     return @[
-             [(SSStopDistance *) stopsByDistance[0] stop],
-             [(SSStopDistance *) stopsByDistance[1] stop],
-             [(SSStopDistance *) stopsByDistance[2] stop]];
+             [(SSStopDistance *) sortedStopsByDistance[0] stop],
+             [(SSStopDistance *) sortedStopsByDistance[1] stop],
+             [(SSStopDistance *) sortedStopsByDistance[2] stop]];
 }
 
 - (NSArray *)stopsWithinShortTripRangeOfStops:(NSArray *)stops
@@ -155,10 +155,9 @@ static NSString *const kLineDataFileName = @"lines.json";
 }
 
 double distance (CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
-    return sqrt(
-                (to.latitude - from.latitude) * (to.latitude - from.latitude)
-                + (to.longitude - from.longitude) * (to.longitude - from.longitude)
-                );
+    CLLocation *fromLocation = [[CLLocation alloc] initWithCoordinate:from altitude:0 horizontalAccuracy:0 verticalAccuracy:0 course:0 speed:0 timestamp:0];
+    CLLocation *toLocation = [[CLLocation alloc] initWithCoordinate:to altitude:0 horizontalAccuracy:0 verticalAccuracy:0 course:0 speed:0 timestamp:0];
+    return [fromLocation distanceFromLocation:toLocation];
 };
 
 @end
