@@ -10,6 +10,18 @@
 
 @implementation SSStop
 
+#pragma mark - Accessors
+
+- (BOOL)isSBahn
+{
+    return [self.name hasPrefix:@"S "] || [self.name hasPrefix:@"S+U "];
+}
+
+- (BOOL)isUBahn
+{
+    return [self.name hasPrefix:@"U "] || [self.name hasPrefix:@"S+U "];
+}
+
 #pragma mark - MKAnnotation
 
 - (CLLocationCoordinate2D)coordinate
