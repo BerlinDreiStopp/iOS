@@ -130,7 +130,7 @@ static NSString *const kLineDataFileName = @"lines.json";
     for (SSStop *stop in stops) {
         [self stopsWithinRange:kRange ofStop:stop withResults:results];
     }
-    return [NSArray array];
+    return [results allObjects];
 }
 
 - (void)stopsWithinRange:(NSUInteger)range ofStop:(SSStop *)origin withResults:(NSMutableSet *)results
