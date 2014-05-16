@@ -1,0 +1,50 @@
+agency_id,agency_name,agency_url,agency_timezone,agency_lang,agency_phone
+VBB,Verkehrsverbund Brandenburg-Berlin,http://www.vbb.de,Europe/Berlin,de,
+0NV___,Neißeverkehr GmbH,http://www.vbb.de,Europe/Berlin,de,
+ANG---,Günter Anger Güterverkehrs GmbH & Co. Omnibusvermietung KG,http://www.vbb.de,Europe/Berlin,de,
+BMO---,Busverkehr Märkisch-Oderland GmbH,http://www.vbb.de,Europe/Berlin,de,
+BON---,Busverkehr Oder-Spree GmbH,http://www.bos-fw.de,Europe/Berlin,de,03361 556133
+BRB---,Verkehrsbetriebe Brandenburg an der Havel GmbH,http://www.vbbr.de,Europe/Berlin,de,03381 5340
+BRT---,Verkehrsbetriebe Brandenburg an der Havel GmbH,http://www.vbbr.de,Europe/Berlin,de,03381 5340
+BTS___,Barnimer Busgesellschaft mbH,http://www.bbg-eberswalde.de,Europe/Berlin,de,03334 235003
+BVB---,Berliner Verkehrsbetriebe,http://www.bvg.de,Europe/Berlin,de,030 19449
+BVF---,Berliner Verkehrsbetriebe,http://www.bvg.de,Europe/Berlin,de,030 19449
+BVT---,Berliner Verkehrsbetriebe,http://www.bvg.de,Europe/Berlin,de,030 19449
+BVU---,Berliner Verkehrsbetriebe,http://www.bvg.de,Europe/Berlin,de,030 19449
+CNB---,Cottbusverkehr GmbH,http://www.cottbusverkehr.de,Europe/Berlin,de,0355 8662422
+CNT---,Cottbusverkehr GmbH,http://www.cottbusverkehr.de,Europe/Berlin,de,0355 8662422
+DBS---,S-Bahn Berlin GmbH,http://www.s-bahn-berlin.de,Europe/Berlin,de,030 29743333
+EGP---,Eisenbahngesellschaft Potsdam,http://www.eg-potsdam.de,Europe/Berlin,de,0331 27978391
+ENVB__,Verkehrsmanagement Elbe-Elster GmbH,http://www.verkehrsmanagement-elbeelster.de,Europe/Berlin,de,03531 650010
+FFB---,Stadtverkehrsgesellschaft mbH Frankfurt (Oder),http://www.svf-ffo.de,Europe/Berlin,de,0800 5566 888
+FFT---,Stadtverkehrsgesellschaft mbH Frankfurt (Oder),http://www.svf-ffo.de,Europe/Berlin,de,0800 5566 888
+GLA---,Glaser,http://www.busreisen-glaser.de,Europe/Berlin,de,033841 99222
+HVG---,Havelbus Verkehrsgesellschaft mbH,http://www.havelbus.de,Europe/Berlin,de,0331 7491400
+LAN---,Lange,http://www.lange-tours.de,Europe/Berlin,de,033841 99222
+N01---,DB Regio AG,http://www.bahn.de/brandenburg,Europe/Berlin,de,0331 2356881
+N04---,DB Regio AG,http://www.bahn.de/brandenburg,Europe/Berlin,de,0331 2356881
+N51---,DB Regio AG,http://www.bahn.de/brandenburg,Europe/Berlin,de,0331 2356881
+NBB---,DB Regio AG,http://www.bahn.de/brandenburg,Europe/Berlin,de,0331 2356881
+NBW---,DB Regio AG,http://www.bahn.de/brandenburg,Europe/Berlin,de,0331 2356881
+NEB---,NEB Betriebsgesellschaft mbH,http://www.neb.de,Europe/Berlin,de,030 396011344
+ODEN__,ODEG Ostdeutsche Eisenbahn GmbH,http://www.odeg.de,Europe/Berlin,de,030 514888888
+ORPN--,ORP Ostprignitz-Ruppiner Personennahverkehrsgesellschaft mbH,http://www.orp-busse.de,Europe/Berlin,de,01805 899677
+OVG---,Oberhavel Verkehrsgesellschaft mbH,http://www.ovg-online.de,Europe/Berlin,de,03306 2307
+REI---,A. Reich GmbH Busbetrieb,http://www.a-reich.com,Europe/Berlin,de,03372 404677
+RVS---,Regionale Verkehrsgesellschaft Dahme-Spreewald mbH,http://www.rvs-lds.de,Europe/Berlin,de,03544 50010
+SCH---,Busverkehr Gerd Schmidt,http://www.fahrschuleschmidt.de,Europe/Berlin,de,03574 760175
+SEV---,S-Bahn Berlin GmbH,http://www.s-bahn-berlin.de,Europe/Berlin,de,030 29743333
+SRS---,Schöneicher Rüdersdorfer Straßenbahn GmbH,http://www.vbb.de,Europe/Berlin,de,
+STE---,Strausberger Eisenbahn GmbH,http://www.strausberger-eisenbahn.de,Europe/Berlin,de,03341 345100
+STF---,Strausberger Eisenbahn GmbH,http://www.strausberger-eisenbahn.de,Europe/Berlin,de,03341 345100
+STG---,Sabinchen Touristik GmbH,http://www.vbb.de/de/article/verkehrsunternehmen-im-vbb/sabinchen-touristik-gmbh/6613.html,Europe/Berlin,de,033748 70141
+UVGG__,Uckermärkische Verkehrsgesellschaft,http://www.vbb.de,Europe/Berlin,de,
+VGB---,Verkehrsgesellschaft Belzig mbH,http://www.vgbelzig.de,Europe/Berlin,de,033841 99222
+VGOSL_,Verkehrsgesellschaft Oberspreewald-Lausitz mbH,http://www.vgosl.de,Europe/Berlin,de,03531 650010
+VGP---,Verkehrsgesellschaft Prignitz mbH,http://www.vgp-prignitz.de,Europe/Berlin,de,03876 789940
+VIB---,Verkehrsbetrieb Potsdam GmbH,http://www.vip-potsdam.de,Europe/Berlin,de,0331 6614694
+VIF---,Verkehrsbetrieb Potsdam GmbH,http://www.vip-potsdam.de,Europe/Berlin,de,0331 6614694
+VIT---,Verkehrsbetrieb Potsdam GmbH,http://www.vip-potsdam.de,Europe/Berlin,de,0331 6614694
+VTF---,Verkehrsgesellschaft Teltow-Fläming mbH,http://www.vbb.de,Europe/Berlin,de,
+WEZ---,Wetzel,http://www.wetzel-cammer.de,Europe/Berlin,de,033835 228
+WS---_,Woltersdorfer Straßenbahn GmbH,http://www.vbb.de,Europe/Berlin,de,
