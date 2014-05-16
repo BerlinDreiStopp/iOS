@@ -11,7 +11,7 @@
 @interface SSLine : NSObject
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) NSString *color;
-@property (nonatomic, strong) UIColor *uiColor;
+@property (nonatomic, strong) NSString *hexColor;
+@property (nonatomic, readonly) UIColor *color;
 
 @end

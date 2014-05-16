@@ -8,6 +8,11 @@
 
 #import "SSService.h"
 #import "SSStop.h"
+#import "SSLine.h"
+
+static const NSUInteger kRange = 3;
+static NSString *const kStopDataFileName = @"stops.json";
+static NSString *const kLineDataFileName = @"lines.json";
 
 @interface SSStopDistance : NSObject
 
@@ -19,10 +24,83 @@
 @interface SSService ()
 
 @property (nonatomic, strong) NSArray *stops;
+@property (nonatomic, strong) NSDictionary *linesByName;
 
 @end
 
 @implementation SSService
+
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        [self loadLines];
+        [self loadStops];
+    }
+    return self;
+}
+
+- (void)loadLines
+{
+    NSMutableDictionary *linesByName = [NSMutableDictionary dictionary];
+    for (NSDictionary *dict in [self arrayWithKey:@"lines" fromJSONFileNamed:kLineDataFileName]) {
+        SSLine *line = [[SSLine alloc] init];
+        line.name = dict[@"name"];
+        line.hexColor = dict[@"color"];
+        [linesByName setObject:line forKey:line.name];
+    }
+    self.linesByName = linesByName;
+}
+
+- (void)loadStops
+{
+    NSMutableDictionary *stopsById = [NSMutableDictionary dictionary];
+    
+    // Do one pass over the JSON and set up each object
+    for (NSDictionary *dict in [self arrayWithKey:@"stops" fromJSONFileNamed:kLineDataFileName]) {
+        SSStop *stop = [[SSStop alloc] init];
+        stop.hafasId = dict[@"id"];
+        stop.name = dict[@"name"];
+        stop.latitude = [dict[@"latitude"] doubleValue];
+        stop.longitude = [dict[@"longitude"] doubleValue];
+        stop.lines = [self linesForLineNames:dict[@"lines"]];
+        stop.adjacentStopIds = dict[@"adjacent_stops"];
+        [stopsById setObject:stop forKey:stop.hafasId];
+    }
+
+    // Do another pass over the stop objects and connect up the adjacent stops
+    for (SSStop *stop in stopsById) {
+        NSMutableArray *adjacentStops = [NSMutableArray array];
+        for (NSString *adjacentStopId in stop.adjacentStopIds) {
+            [adjacentStops addObject:stopsById[adjacentStopId]];
+        }
+        stop.adjacentStops = [NSArray arrayWithArray:adjacentStops];
+    }
+    self.stops = [stopsById allValues];
+}
+
+- (NSArray *)linesForLineNames:(NSArray *)lineNames
+{
+    NSMutableSet *lines = [NSMutableSet set];
+    for (NSString *lineName in lineNames) {
+        SSLine *line = self.linesByName[lineName];
+        if (line) {
+            [lines addObject:line];
+        }
+    }
+    return [lines allObjects];
+}
+
+- (NSArray *)arrayWithKey:(NSString *)key fromJSONFileNamed:(NSString *)file
+{
+    NSError *error;
+    NSData *data = [NSData dataWithContentsOfFile:file];
+    NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
+    if (error) {
+        NSLog(@"%@", error);
+    }
+    return json[key];
+}
 
 - (NSArray *)closestStopsTo:(CLLocationCoordinate2D)location
 {
@@ -42,7 +120,7 @@
 {
     NSMutableSet *results = [NSMutableSet set];
     for (SSStop *stop in stops) {
-        [self stopsWithinRange:3 ofStop:stop withResults:results];
+        [self stopsWithinRange:kRange ofStop:stop withResults:results];
     }
     return [NSArray array];
 }
