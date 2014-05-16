@@ -30,15 +30,15 @@
     self.serviceserviceSERVICE = [[SSService alloc] init];
 
     __weak typeof(self) weakSelf = self;
-    self.locationManager.onUpdateLocations = ^(NSArray *locations) {
-        CLLocation *location = locations.firstObject;
-
-        if (nil == location) {
-            [weakSelf showMarkersForStops:nil];
-        }
-
-        [weakSelf updateStopsNearLocation:location];
-    };
+//    self.locationManager.onUpdateLocations = ^(NSArray *locations) {
+//        CLLocation *location = locations.firstObject;
+//
+//        if (nil == location) {
+////            [weakSelf showMarkersForStops:nil];
+//        }
+//
+////        [weakSelf updateStopsNearLocation:location];
+//    };
     
     [self configureMapView];
 }
@@ -47,6 +47,10 @@
 
 - (void)mapView:(MKMapView *)mapView didSelectAnnotationView:(MKPinAnnotationView *)view
 {
+    if (![view isKindOfClass:[MKPinAnnotationView class]]) {
+        return;
+    }
+
     SSStop *stop = view.annotation;
 
     NSArray *nearbyStops = [self.serviceserviceSERVICE stopsWithinShortTripRangeOfStops:@[stop]];
@@ -54,6 +58,9 @@
     // naively reset state
     for (id<MKAnnotation> annotation in self.mapView.annotations) {
         MKPinAnnotationView *v = (MKPinAnnotationView *)[self.mapView viewForAnnotation:annotation];
+        if (![v isKindOfClass:[MKPinAnnotationView class]]) {
+            continue;
+        }
         v.pinColor = MKPinAnnotationColorRed;
     }
 
@@ -67,12 +74,18 @@
         for (id<MKAnnotation> annotation in mapView.annotations) {
             if ([annotation isEqual:nearbyStop]) {
                 MKPinAnnotationView *v = (MKPinAnnotationView *)[self.mapView viewForAnnotation:annotation];
+                if (![v isKindOfClass:[MKPinAnnotationView class]]) {
+                    return;
+                }
                 v.pinColor = MKPinAnnotationColorGreen;
             }
         }
 
         for (NSString *stopID in nearbyStop.adjacentStops) {
             NSUInteger idx = [self.mapView.annotations indexOfObjectPassingTest:^BOOL(SSStop *stop, NSUInteger idx, BOOL *stopLoop) {
+                if (![stop isKindOfClass:[SSStop class]]) {
+                    return NO;
+                }
                 return [stop.hafasId isEqual:stopID];
             }];
 
@@ -120,7 +133,6 @@
         pinView = [[MKPinAnnotationView alloc] initWithAnnotation:annotation reuseIdentifier:AnnotationIdentifier];
 
         [pinView setPinColor:MKPinAnnotationColorRed];
-        pinView.animatesDrop = YES;
         pinView.canShowCallout = YES;
 
         UIImageView *iconView = [[UIImageView alloc] initWithImage:[self iconForStop:annotation]];
@@ -143,16 +155,20 @@
     self.mapView.showsUserLocation = YES;
     self.mapView.showsPointsOfInterest = YES;
     self.mapView.showsBuildings = YES;
-    self.mapView.userTrackingMode = MKUserTrackingModeFollow;
+    self.mapView.userTrackingMode = MKUserTrackingModeNone;
     
     CLLocation *location = [self.locationManager currentUserLocation];
+
+    if (nil == location) {
+        // betahaus
+        location = [[CLLocation alloc] initWithLatitude:52.502543 longitude:13.412206];
+    }
 
     MKCoordinateSpan span = MKCoordinateSpanMake(0.025, 0.025);
     MKCoordinateRegion region = MKCoordinateRegionMake(location.coordinate, span);
 
     [self.mapView setRegion:region animated:NO];
-
-    [self updateStopsNearLocation:nil];
+    [self updateStopsNearLocation:location];
 }
 
 - (void)updateStopsNearLocation:(CLLocation *)location
@@ -166,8 +182,10 @@
     [self.mapView removeAnnotations:self.mapView.annotations];
     [self.mapView addAnnotations:stops];
 
-    MKCoordinateRegion region = [self regionForAnnotations:stops];
-    [self.mapView setRegion:region animated:YES];
+    if (!self.mapView.userLocation) {
+        MKCoordinateRegion region = [self regionForAnnotations:stops];
+        [self.mapView setRegion:region animated:YES];
+    }
 }
 
 - (MKCoordinateRegion)regionForAnnotations:(NSArray *)annotations
