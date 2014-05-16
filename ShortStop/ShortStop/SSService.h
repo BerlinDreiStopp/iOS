@@ -11,6 +11,8 @@
 
 @interface SSService : NSObject
 
+
+
 - (NSArray *)closestStopsTo:(CLLocationCoordinate2D)location;
 
 - (NSArray *)stopsWithinShortTripRangeOfStops:(NSArray *)stops;
