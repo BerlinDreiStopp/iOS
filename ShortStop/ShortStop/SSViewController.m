@@ -8,22 +8,35 @@
 
 #import "SSViewController.h"
 
+#import "SSLocationManager.h"
+
 @interface SSViewController ()
+
+@property (nonatomic, strong) SSLocationManager *locationManager;
 
 @end
 
 @implementation SSViewController
 
-- (void)viewDidLoad
-{
+- (void)viewDidLoad {
     [super viewDidLoad];
-	// Do any additional setup after loading the view, typically from a nib.
+
+    self.locationManager = [[SSLocationManager alloc] init];
+    
+    [self configureMapView];
 }
 
-- (void)didReceiveMemoryWarning
-{
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
+- (void)configureMapView {
+    self.mapView.showsUserLocation = YES;
+    self.mapView.showsPointsOfInterest = YES;
+    self.mapView.showsBuildings = YES;
+    
+    CLLocation *location = [self.locationManager currentUserLocation];
+    
+    MKCoordinateSpan span = MKCoordinateSpanMake(0.025, 0.025);
+    MKCoordinateRegion region = MKCoordinateRegionMake(location.coordinate, span);
+    
+    [self.mapView setRegion:region animated:YES];
 }
 
 @end

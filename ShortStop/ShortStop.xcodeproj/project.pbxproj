@@ -22,6 +22,7 @@
 		55C9829919260E6C001D8297 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 55C9829719260E6C001D8297 /* InfoPlist.strings */; };
 		55C9829B19260E6C001D8297 /* ShortStopTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C9829A19260E6C001D8297 /* ShortStopTests.m */; };
 		55C982A5192610A8001D8297 /* MapKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 55C982A4192610A8001D8297 /* MapKit.framework */; };
+		55C982A8192610FA001D8297 /* SSLocationManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 55C982A7192610FA001D8297 /* SSLocationManager.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,6 +56,8 @@
 		55C9829819260E6C001D8297 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		55C9829A19260E6C001D8297 /* ShortStopTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ShortStopTests.m; sourceTree = "<group>"; };
 		55C982A4192610A8001D8297 /* MapKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MapKit.framework; path = System/Library/Frameworks/MapKit.framework; sourceTree = SDKROOT; };
+		55C982A6192610FA001D8297 /* SSLocationManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLocationManager.h; sourceTree = "<group>"; };
+		55C982A7192610FA001D8297 /* SSLocationManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSLocationManager.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -121,6 +124,8 @@
 				55C9828119260E6B001D8297 /* Main.storyboard */,
 				55C9828419260E6B001D8297 /* SSViewController.h */,
 				55C9828519260E6B001D8297 /* SSViewController.m */,
+				55C982A6192610FA001D8297 /* SSLocationManager.h */,
+				55C982A7192610FA001D8297 /* SSLocationManager.m */,
 				55C9828719260E6B001D8297 /* Images.xcassets */,
 				55C9827619260E6B001D8297 /* Supporting Files */,
 			);
@@ -254,6 +259,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				55C982A8192610FA001D8297 /* SSLocationManager.m in Sources */,
 				55C9828619260E6B001D8297 /* SSViewController.m in Sources */,
 				55C9828019260E6B001D8297 /* SSAppDelegate.m in Sources */,
 				55C9827C19260E6B001D8297 /* main.m in Sources */,
