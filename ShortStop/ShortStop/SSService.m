@@ -21,6 +21,9 @@ static NSString *const kLineDataFileName = @"lines.json";
 
 @end
 
+@implementation SSStopDistance
+@end
+
 @interface SSService ()
 
 @property (nonatomic, strong) NSArray *stops;
