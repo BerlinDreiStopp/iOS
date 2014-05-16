@@ -22,6 +22,12 @@ static NSString *const kLineDataFileName = @"lines.json";
 @end
 
 @implementation SSStopDistance
+
+- (NSString *)debugDescription
+{
+    return [NSString stringWithFormat:@"%f: %@", self.distance, self.stop.name];
+}
+
 @end
 
 @interface SSService ()
@@ -108,6 +114,10 @@ static NSString *const kLineDataFileName = @"lines.json";
 
 - (NSArray *)closestStopsTo:(CLLocationCoordinate2D)location
 {
+    if (location.longitude == 0 && location.latitude == 0) {
+        return self.stops;
+    }
+    
     NSMutableArray *stopsByDistance = [NSMutableArray array];
     for (SSStop *stop in self.stops) {
         SSStopDistance *stopDistance = [[SSStopDistance alloc] init];
@@ -118,6 +128,7 @@ static NSString *const kLineDataFileName = @"lines.json";
     [stopsByDistance sortedArrayUsingComparator:^NSComparisonResult(SSStopDistance *obj1, SSStopDistance *obj2) {
         return obj1.distance < obj2.distance ? NSOrderedAscending : NSOrderedDescending;
     }];
+    
     return @[
              [(SSStopDistance *) stopsByDistance[0] stop],
              [(SSStopDistance *) stopsByDistance[1] stop],
