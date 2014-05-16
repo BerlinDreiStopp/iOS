@@ -48,7 +48,7 @@ static NSString *const kLineDataFileName = @"lines.json";
     NSMutableDictionary *linesByName = [NSMutableDictionary dictionary];
     for (NSDictionary *dict in [self arrayWithKey:@"lines" fromJSONFileNamed:kLineDataFileName]) {
         SSLine *line = [[SSLine alloc] init];
-        line.name = dict[@"name"];
+        line.name = dict[@"id"];
         line.hexColor = dict[@"color"];
         [linesByName setObject:line forKey:line.name];
     }
@@ -60,7 +60,7 @@ static NSString *const kLineDataFileName = @"lines.json";
     NSMutableDictionary *stopsById = [NSMutableDictionary dictionary];
     
     // Do one pass over the JSON and set up each object
-    for (NSDictionary *dict in [self arrayWithKey:@"stops" fromJSONFileNamed:kLineDataFileName]) {
+    for (NSDictionary *dict in [self arrayWithKey:@"stops" fromJSONFileNamed:kStopDataFileName]) {
         SSStop *stop = [[SSStop alloc] init];
         stop.hafasId = dict[@"id"];
         stop.name = dict[@"name"];
@@ -72,7 +72,7 @@ static NSString *const kLineDataFileName = @"lines.json";
     }
 
     // Do another pass over the stop objects and connect up the adjacent stops
-    for (SSStop *stop in stopsById) {
+    for (SSStop *stop in [stopsById allValues]) {
         NSMutableArray *adjacentStops = [NSMutableArray array];
         for (NSString *adjacentStopId in stop.adjacentStopIds) {
             [adjacentStops addObject:stopsById[adjacentStopId]];
@@ -97,7 +97,8 @@ static NSString *const kLineDataFileName = @"lines.json";
 - (NSArray *)arrayWithKey:(NSString *)key fromJSONFileNamed:(NSString *)file
 {
     NSError *error;
-    NSData *data = [NSData dataWithContentsOfFile:file];
+    NSString *path = [[NSBundle mainBundle] pathForResource:file ofType:nil];
+    NSData *data = [NSData dataWithContentsOfFile:path];
     NSDictionary *json = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     if (error) {
         NSLog(@"%@", error);
@@ -112,6 +113,7 @@ static NSString *const kLineDataFileName = @"lines.json";
         SSStopDistance *stopDistance = [[SSStopDistance alloc] init];
         stopDistance.distance = distance(location, stop.location);
         stopDistance.stop = stop;
+        [stopsByDistance addObject:stopDistance];
     }
     [stopsByDistance sortedArrayUsingComparator:^NSComparisonResult(SSStopDistance *obj1, SSStopDistance *obj2) {
         return obj1.distance < obj2.distance ? NSOrderedAscending : NSOrderedDescending;
