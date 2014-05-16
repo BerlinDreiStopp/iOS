@@ -12,11 +12,14 @@
 #import "SSLocationManager.h"
 
 #import "SSStop.h"
+#import "SSTrainLinePolyline.h"
 
 @interface SSViewController ()
 
 @property (nonatomic, strong) SSService *serviceserviceSERVICE;
 @property (nonatomic, strong) SSLocationManager *locationManager;
+
+@property (nonatomic, strong) NSMutableArray *adjacencyOverlays;
 
 @end
 
@@ -26,10 +29,12 @@
 {
     [super viewDidLoad];
 
+    self.adjacencyOverlays = [NSMutableArray array];
+
     self.locationManager = [[SSLocationManager alloc] init];
     self.serviceserviceSERVICE = [[SSService alloc] init];
 
-    __weak typeof(self) weakSelf = self;
+//    __weak typeof(self) weakSelf = self;
 //    self.locationManager.onUpdateLocations = ^(NSArray *locations) {
 //        CLLocation *location = locations.firstObject;
 //
@@ -64,7 +69,8 @@
         v.pinColor = MKPinAnnotationColorRed;
     }
 
-    [self.mapView removeOverlays:self.mapView.overlays];
+    [self.mapView removeOverlays:self.adjacencyOverlays];
+    [self.adjacencyOverlays removeAllObjects];
 
     // show current as purple
     view.pinColor = MKPinAnnotationColorPurple;
@@ -105,12 +111,21 @@
             MKPolyline *polyline = [MKPolyline polylineWithCoordinates:coordinateArray count:2];
 
             [self.mapView addOverlay:polyline];
+
+            [self.adjacencyOverlays addObject:polyline];
         }
     }
 }
 
 - (MKOverlayRenderer *)mapView:(MKMapView *)mapView rendererForOverlay:(id<MKOverlay>)overlay
 {
+    if ([overlay isKindOfClass:[SSTrainLinePolyline class]]) {
+        MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline *)overlay];
+        renderer.lineWidth = 3.f;
+        renderer.strokeColor = ((SSTrainLinePolyline *)overlay).color;
+        renderer.alpha = 0.9f;
+        return renderer;
+    }
     MKPolylineRenderer *renderer = [[MKPolylineRenderer alloc] initWithPolyline:(MKPolyline *)overlay];
     renderer.lineWidth = 3.f;
     renderer.strokeColor = [UIColor blueColor];
@@ -163,6 +178,10 @@
         // betahaus
         location = [[CLLocation alloc] initWithLatitude:52.502543 longitude:13.412206];
     }
+
+    // draw bahn lines
+    [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU1]] color:[SSTrainLinePolyline colorForU1]]];
+    [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU8]] color:[SSTrainLinePolyline colorForU8]]];
 
     MKCoordinateSpan span = MKCoordinateSpanMake(0.025, 0.025);
     MKCoordinateRegion region = MKCoordinateRegionMake(location.coordinate, span);

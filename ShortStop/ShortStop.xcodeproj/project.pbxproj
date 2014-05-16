@@ -13,6 +13,7 @@
 		42917F4A19264A6700344EF4 /* UBahnLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42917F4619264A6700344EF4 /* UBahnLogo@2x.png */; };
 		42917F4D19264C3000344EF4 /* USBahnLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 42917F4B19264C3000344EF4 /* USBahnLogo.png */; };
 		42917F4E19264C3000344EF4 /* USBahnLogo@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 42917F4C19264C3000344EF4 /* USBahnLogo@2x.png */; };
+		42917F511926686500344EF4 /* SSTrainLinePolyline.m in Sources */ = {isa = PBXBuildFile; fileRef = 42917F501926686500344EF4 /* SSTrainLinePolyline.m */; };
 		46A6CB5519261B8A0023155D /* SSStop.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A6CB5419261B8A0023155D /* SSStop.m */; };
 		46A6CB5819261D6E0023155D /* SSLine.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A6CB5719261D6E0023155D /* SSLine.m */; };
 		46A6CB5B192620E30023155D /* SSService.m in Sources */ = {isa = PBXBuildFile; fileRef = 46A6CB5A192620E30023155D /* SSService.m */; };
@@ -53,6 +54,8 @@
 		42917F4619264A6700344EF4 /* UBahnLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "UBahnLogo@2x.png"; sourceTree = "<group>"; };
 		42917F4B19264C3000344EF4 /* USBahnLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = USBahnLogo.png; sourceTree = "<group>"; };
 		42917F4C19264C3000344EF4 /* USBahnLogo@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "USBahnLogo@2x.png"; sourceTree = "<group>"; };
+		42917F4F1926686500344EF4 /* SSTrainLinePolyline.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSTrainLinePolyline.h; sourceTree = "<group>"; };
+		42917F501926686500344EF4 /* SSTrainLinePolyline.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSTrainLinePolyline.m; sourceTree = "<group>"; };
 		46A6CB5319261B8A0023155D /* SSStop.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSStop.h; sourceTree = "<group>"; };
 		46A6CB5419261B8A0023155D /* SSStop.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SSStop.m; sourceTree = "<group>"; };
 		46A6CB5619261D6E0023155D /* SSLine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SSLine.h; sourceTree = "<group>"; };
@@ -180,6 +183,8 @@
 				46A6CB5A192620E30023155D /* SSService.m */,
 				55C9828719260E6B001D8297 /* Images.xcassets */,
 				55C9827619260E6B001D8297 /* Supporting Files */,
+				42917F4F1926686500344EF4 /* SSTrainLinePolyline.h */,
+				42917F501926686500344EF4 /* SSTrainLinePolyline.m */,
 			);
 			path = ShortStop;
 			sourceTree = "<group>";
@@ -322,6 +327,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				42917F511926686500344EF4 /* SSTrainLinePolyline.m in Sources */,
 				55C982A8192610FA001D8297 /* SSLocationManager.m in Sources */,
 				55C9828619260E6B001D8297 /* SSViewController.m in Sources */,
 				55C9828019260E6B001D8297 /* SSAppDelegate.m in Sources */,

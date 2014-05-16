@@ -130,10 +130,7 @@ static NSString *const kLineDataFileName = @"lines.json";
         return obj1.distance < obj2.distance ? NSOrderedAscending : NSOrderedDescending;
     }];
     
-    return @[
-             [(SSStopDistance *) sortedStopsByDistance[0] stop],
-             [(SSStopDistance *) sortedStopsByDistance[1] stop],
-             [(SSStopDistance *) sortedStopsByDistance[2] stop]];
+    return self.stops;
 }
 
 - (NSArray *)stopsWithinShortTripRangeOfStops:(NSArray *)stops
@@ -160,5 +157,25 @@ double distance (CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
     CLLocation *toLocation = [[CLLocation alloc] initWithCoordinate:to altitude:0 horizontalAccuracy:0 verticalAccuracy:0 course:0 speed:0 timestamp:0];
     return [fromLocation distanceFromLocation:toLocation];
 };
+
+- (NSArray *)stopsWithNames:(NSArray *)stopNames
+{
+    NSMutableArray *stops = [NSMutableArray array];
+    for (NSString *stopName in stopNames) {
+        [stops addObject:[self stopWithName:stopName]];
+    }
+    return [stops copy];
+}
+
+- (SSStop *)stopWithName:(NSString *)name
+{
+    NSUInteger idx = [self.stops indexOfObjectPassingTest:^BOOL(SSStop *sstop, NSUInteger idx, BOOL *stop) {
+        return [sstop.name isEqualToString:name];
+    }];
+
+    NSAssert(NSNotFound != idx, @"Can't find stop: %@", name);
+
+    return [self.stops objectAtIndex:idx];
+}
 
 @end
