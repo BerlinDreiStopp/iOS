@@ -184,9 +184,11 @@ double distance (CLLocationCoordinate2D from, CLLocationCoordinate2D to) {
         return [sstop.name isEqualToString:name];
     }];
     
-    if (NSNotFound == idx) {
-        return nil;
-    }
+    NSAssert(NSNotFound != idx, @"Cannot find %@", name);
+
+//    if (NSNotFound == idx) {
+//        return nil;
+//    }
 
     return [self.stops objectAtIndex:idx];
 }

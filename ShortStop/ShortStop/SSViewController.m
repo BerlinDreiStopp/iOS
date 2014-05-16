@@ -181,7 +181,15 @@
 
     // draw bahn lines
     [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU1]] color:[SSTrainLinePolyline colorForU1]]];
+    [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU2]] color:[SSTrainLinePolyline colorForU2]]];
+    [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU3]] color:[SSTrainLinePolyline colorForU3]]];
+    [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU4]] color:[SSTrainLinePolyline colorForU4]]];
+    [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU5]] color:[SSTrainLinePolyline colorForU5]]];
+    [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU55]] color:[SSTrainLinePolyline colorForU55]]];
+    [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU6]] color:[SSTrainLinePolyline colorForU6]]];
+    [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU7]] color:[SSTrainLinePolyline colorForU7]]];
     [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU8]] color:[SSTrainLinePolyline colorForU8]]];
+    [self.mapView addOverlay:[SSTrainLinePolyline polylineForStops:[self.serviceserviceSERVICE stopsWithNames:[SSTrainLinePolyline stopsForU9]] color:[SSTrainLinePolyline colorForU9]]];
 
     MKCoordinateSpan span = MKCoordinateSpanMake(0.025, 0.025);
     MKCoordinateRegion region = MKCoordinateRegionMake(location.coordinate, span);
